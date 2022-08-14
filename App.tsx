@@ -5,8 +5,9 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Platform } from "react-native";
 import WalletConnectProvider from "@walletconnect/react-native-dapp";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Provider as PaperProvider } from "react-native-paper";
 
-import WalletConnectExperience from "./Home";
+import Route from "./routes";
 
 const SCHEME_FROM_APP_JSON = "walletconnect-example";
 
@@ -22,10 +23,10 @@ export default function App() {
         asyncStorage: AsyncStorage,
       }}
     >
-      <View style={styles.container}>
-        <WalletConnectExperience />
-        <StatusBar style="auto" />
-      </View>
+      <PaperProvider>
+        <Route />
+      </PaperProvider>
+      <StatusBar style="auto" />
     </WalletConnectProvider>
   );
 }
